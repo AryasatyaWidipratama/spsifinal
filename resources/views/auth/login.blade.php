@@ -11,19 +11,23 @@
 <body>
     <div class="center">
         <h1>Login</h1>
-        <form method="post" action="{{ route('login.authenticate') }}">
+        <form method="POST" action="{{ route('login.authenticate') }}">
             @csrf
 
             <div class="txt_field">
-                <input type="text" required>
+                <input type="text" name="login" value="{{ old('login') }}" required>
                 <span></span>
                 <label>NIM / NIP</label>
             </div>
+            {{ $errors->first('email') }}
+
             <div class="txt_field">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <span></span>
                 <label>Password</label>
             </div>
+            {{ $errors->first('password') }}
+
             {{-- <div class="pass">Forgot Password?</div> --}}
             <input type="submit" value="Login">
             <div class="signup_link">

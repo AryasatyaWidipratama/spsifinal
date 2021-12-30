@@ -67,9 +67,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
                         <p>Log out</p>
                     </a>
+                    <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
                 <li class="separator hidden-lg"></li>
             </ul>
