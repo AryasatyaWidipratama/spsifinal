@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporanTable extends Migration
+class CreateJadwalsidangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateLaporanTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporan', function (Blueprint $table) {
+        Schema::create('jadwal_sidang', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_mahasiswa');
             $table->foreign('id_mahasiswa')->references('id')->on('users');
-            $table->date('tgl_laporan');
-            $table->text('file_laporan');
+            $table->unsignedBigInteger('id_paa');
+            $table->foreign('id_paa')->references('id')->on('users');
+            $table->unsignedBigInteger('id_dosen');
+            $table->foreign('id_dosen')->references('id')->on('users');
+            $table->dateTime('tgl_sidang');
+            $table->string('semester', 5);
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateLaporanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan');
+        Schema::dropIfExists('jadwal_sidang');
     }
 }

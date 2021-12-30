@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDosenTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateDosenTable extends Migration
      */
     public function up()
     {
-        Schema::create('dosen', function (Blueprint $table) {
-            $table->increments('nip');
-            $table->string('nama');
-            $table->string('no_telp');
-            $table->string('email');
-            $table->string('alamat');
-            $table->string('jenis_kelamin');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('jenis_role');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateDosenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('roles');
     }
 }

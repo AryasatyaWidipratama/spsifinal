@@ -13,12 +13,14 @@ class CreateHonorTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan', function (Blueprint $table) {
-            $table->increments('no_pengajuan');
-            $table->integer('kode_paa')->unsigned();
-            $table->foreign('kode_paa')->references('kode_paa')->on('paa');
-            $table->string('tgl_laporan');
-            $table->string('judul');
+        Schema::create('pengajuan_honor', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_paa');
+            $table->foreign('id_paa')->references('id')->on('users');
+            $table->unsignedBigInteger('id_jadwal_sidang');
+            $table->foreign('id_jadwal_sidang')->references('id')->on('jadwal_sidang');
+            $table->date('tgl_pengajuan');
+            $table->string('status');
             $table->timestamps();
         });
     }
