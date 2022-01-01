@@ -18,7 +18,8 @@ Tip 2: you can also add an image using data-image tag
                     <p>Dashboard</p>
                 </a>
             </li>
-            {{-- MENU MAHASISWA --}}
+
+            @can('mahasiswa')
             <li class="{{ Request::is('dashboard/jadwal-sidang*') ? 'active' : '' }}">
                 <a href="{{ route('jadwal-sidang.mahasiswa') }}">
                     <i class="pe-7s-date"></i>
@@ -31,20 +32,23 @@ Tip 2: you can also add an image using data-image tag
                     <p>Laporan</p>
                 </a>
             </li>
-            {{-- END MENU MAHASISWA --}}
+            @endcan
 
-            <li>
-                <a href="typography.html">
+            @can('dosen')
+            <li class="{{ Request::is('dashboard/jadwal-sidang*') ? 'active' : '' }}">
+                <a href="{{ route('jadwal-sidang.dosen') }}">
                     <i class="pe-7s-news-paper"></i>
-                    <p>Typography</p>
+                    <p>Jadwal Sidang</p>
                 </a>
             </li>
-            <li>
-                <a href="icons.html">
-                    <i class="pe-7s-science"></i>
-                    <p>Icons</p>
+            <li class="{{ Request::is('dashboard/honor*') ? 'active' : '' }}">
+                <a href="{{ route('honor.dosen') }}">
+                    <i class="pe-7s-cash"></i>
+                    <p>Honor</p>
                 </a>
             </li>
+            @endcan
+
             <li>
                 <a href="maps.html">
                     <i class="pe-7s-map-marker"></i>

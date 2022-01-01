@@ -13,4 +13,11 @@ class JadwalsidangController extends Controller
 
         return view('dashboard.mahasiswa.jadwal_sidang', $data);
     }
+
+    public function jadwalSidangDosen()
+    {
+        $data['jadwalSidang'] = JadwalSidang::where('id_dosen', auth()->id())->get();
+
+        return view('dashboard.dosen.jadwal_sidang', $data);
+    }
 }

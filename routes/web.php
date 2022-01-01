@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HonorController;
 use App\Http\Controllers\JadwalsidangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
@@ -30,4 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard/jadwal-sidang-mahasiswa', [JadwalsidangController::class, 'jadwalSidangMahasiswa'])->name('jadwal-sidang.mahasiswa');
     Route::resource('dashboard/laporan', LaporanController::class);
+
+    Route::get('/dashboard/jadwal-sidang-dosen', [JadwalsidangController::class, 'jadwalSidangDosen'])->name('jadwal-sidang.dosen');
+    Route::get('/dashboard/honor-dosen', [HonorController::class, 'honorDosen'])->name('honor.dosen');
 });
