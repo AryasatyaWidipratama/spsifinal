@@ -10,6 +10,13 @@
         <br>
         <br>
 
+        @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            {{ session()->get('success') }}
+        </div>
+        @endif
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading text-center">Jadwal Sidang</div>
@@ -32,11 +39,12 @@
                         <td>
                             <ul class="list-inline m-0">
                                 <li class="list-inline-item">
-                                    <a href="{{ route('jadwal-sidang.edit') }}" class="btn btn-xs btn-block btn-info">
+                                    <a href="{{ route('jadwal-sidang.edit', $jadwal->id) }}"
+                                        class="btn btn-xs btn-block btn-info">
                                         Edit
                                     </a>
                                 <li class="list-inline-item">
-                                    <form action="{{ route('jadwal-sidang.destroy') }}" method="POST">
+                                    <form action="{{ route('jadwal-sidang.destroy', $jadwal->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-xs btn-block btn-danger"
