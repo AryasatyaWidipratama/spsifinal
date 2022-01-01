@@ -108,4 +108,70 @@
 </div>
 @endcan
 
+@can('paa')
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading text-center">SIDANG</div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Mahasiswa</th>
+                        <th>Ruang</th>
+                    </tr>
+                    @if ($jadwalSidangPaa->isNotEmpty())
+                    @foreach ($jadwalSidangPaa as $jadwal)
+                    <tr>
+                        <td>
+                            {{ $jadwal->mahasiswa->nama }}
+                        </td>
+                        <td>
+                            {{ $jadwal->ruang_sidang }}
+                        </td>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="2">Belum ada jadwal sidang</td>
+                    </tr>
+                    @endif
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading text-center">Pengajuan Honor</div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Dosen</th>
+                        <th>Status</th>
+                    </tr>
+                    @if ($honorPaa->isNotEmpty())
+                    @foreach ($honorPaa as $honor)
+                    <tr>
+                        <td>
+                            {{ $honor->jadwalSidang->dosen->nama }}
+                        </td>
+                        <td>
+                            {{ $honor->status }}
+                        </td>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="2">Belum ada data honor</td>
+                    </tr>
+                    @endif
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endcan
+
 @endsection

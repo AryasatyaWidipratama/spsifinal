@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\JadwalSidang;
 use App\Models\Laporan;
 use App\Models\PengajuanHonor;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -19,6 +18,8 @@ class DashboardController extends Controller
         $data['totalHonor'] = PengajuanHonor::whereHas('jadwalSidang', function ($query) {
             $query->where('id_dosen', auth()->id());
         })->count();
+        $data['jadwalSidangPaa'] = JadwalSidang::all();
+        $data['honorPaa'] = PengajuanHonor::all();
 
         return view('dashboard.index', $data);
     }
