@@ -25,8 +25,8 @@ Tip 2: you can also add an image using data-image tag
                     <p>Jadwal Sidang</p>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('dashboard/laporan*') ? 'active' : '' }}">
+                <a href="{{ route('laporan.index') }}">
                     <i class="pe-7s-note2"></i>
                     <p>Laporan</p>
                 </a>

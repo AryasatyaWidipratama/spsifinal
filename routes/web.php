@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JadwalsidangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,6 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::get('/dashboard/jadwal-sidang-mahasiswa', [JadwalsidangController::class, 'jadwalSidangMahasiswa']);
+    Route::get('/dashboard/jadwal-sidang-mahasiswa', [JadwalsidangController::class, 'jadwalSidangMahasiswa'])->name('jadwal-sidang.mahasiswa');
+    Route::resource('dashboard/laporan', LaporanController::class);
 });
