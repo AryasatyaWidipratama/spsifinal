@@ -47,7 +47,7 @@
                     <tr>
                         @if ($laporanMahasiswa)
                         <td>
-                            {{ $laporanMahasiswa->file_laporan }}
+                            <a href="{{ Storage::url($laporanMahasiswa->file_laporan) }}" target="_blank">File Laporan Mahasiswa</a>
                         </td>
                         <td>
                             {{ $laporanMahasiswa->tgl_laporan }}
