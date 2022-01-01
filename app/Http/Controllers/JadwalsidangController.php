@@ -86,5 +86,7 @@ class JadwalsidangController extends Controller
 
     public function destroy(JadwalSidang $jadwalSidang)
     {
+        $jadwalSidang->delete();
+        return redirect()->route('jadwal-sidang.index')->with('success', 'Berhasil menghapus data sidang');
     }
 }
