@@ -34,4 +34,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard/jadwal-sidang-dosen', [JadwalsidangController::class, 'jadwalSidangDosen'])->name('jadwal-sidang.dosen');
     Route::get('/dashboard/honor-dosen', [HonorController::class, 'honorDosen'])->name('honor.dosen');
+
+    Route::resource('/dashboard/jadwal-sidang', JadwalsidangController::class);
 });

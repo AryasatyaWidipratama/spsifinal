@@ -37,7 +37,7 @@ Tip 2: you can also add an image using data-image tag
             @can('dosen')
             <li class="{{ Request::is('dashboard/jadwal-sidang*') ? 'active' : '' }}">
                 <a href="{{ route('jadwal-sidang.dosen') }}">
-                    <i class="pe-7s-news-paper"></i>
+                    <i class="pe-7s-date"></i>
                     <p>Jadwal Sidang</p>
                 </a>
             </li>
@@ -49,18 +49,20 @@ Tip 2: you can also add an image using data-image tag
             </li>
             @endcan
 
+            @can('paa')
             <li>
-                <a href="maps.html">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Maps</p>
+                <a href="{{ route('jadwal-sidang.index') }}">
+                    <i class="pe-7s-date"></i>
+                    <p>Jadwal Sidang</p>
                 </a>
             </li>
             <li>
-                <a href="notifications.html">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
+                <a href="#">
+                    <i class="pe-7s-cash"></i>
+                    <p>Honor</p>
                 </a>
             </li>
+            @endcan
             {{-- <li class="active-pro">
                 <a href="upgrade.html">
                     <i class="pe-7s-rocket"></i>
