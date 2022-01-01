@@ -2,9 +2,6 @@
 @section('title') Jadwal Sidang @endsection
 
 @section('content')
-
-
-
 <div class="row">
     <div class="col-md-12">
         <a href="{{ route('jadwal-sidang.create') }}" class="btn btn-primary">
