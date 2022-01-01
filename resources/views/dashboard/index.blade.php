@@ -13,7 +13,7 @@
                 <table class="table">
                     <tr>
                         <th>Tanggal</th>
-                        <th>Jam</th>
+                        <th>Ruang</th>
                     </tr>
                     <tr>
                         @if ($jadwalSidangMahasiswa)
@@ -21,7 +21,7 @@
                             {{ $jadwalSidangMahasiswa->tgl_sidang }}
                         </td>
                         <td>
-                            10.00 - 11.00
+                            {{ $jadwalSidangMahasiswa->ruang_sidang }}
                         </td>
                         @else
                         <td colspan="2">Belum ada jadwal sidang</td>

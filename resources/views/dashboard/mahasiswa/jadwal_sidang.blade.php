@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
             <div class="panel-heading text-center">Jadwal Sidang</div>
@@ -13,7 +13,6 @@
                         <th>ID</th>
                         <th>Mahasiswa</th>
                         <th>Tanggal Sidang</th>
-                        <th>Waktu Sidang</th>
                         <th>Ruang</th>
                     </tr>
                     <tr>
@@ -21,11 +20,9 @@
                         <td>{{ $jadwalSidang->id }}</td>
                         <td>{{ $jadwalSidang->mahasiswa->nama }}</td>
                         <td>{{ $jadwalSidang->tgl_sidang }}</td>
-                        <td>WAKTU</td>
                         <td>{{ $jadwalSidang->ruang_sidang }}</td>
-
                         @else
-                        <td colspan="5">Belum ada jadwal sidang</td>
+                        <td colspan="5" class="text-center">Belum ada jadwal sidang</td>
                         @endif
                     </tr>
                 </table>

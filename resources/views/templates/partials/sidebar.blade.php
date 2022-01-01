@@ -12,21 +12,21 @@ Tip 2: you can also add an image using data-image tag
         </div>
 
         <ul class="nav">
-            <li class="active">
+            <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard.index') }}">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             {{-- MENU MAHASISWA --}}
-            <li>
-                <a href="user.html">
+            <li class="{{ Request::is('dashboard/jadwal-sidang*') ? 'active' : '' }}">
+                <a href="{{ route('jadwal-sidang.mahasiswa') }}">
                     <i class="pe-7s-date"></i>
                     <p>Jadwal Sidang</p>
                 </a>
             </li>
             <li>
-                <a href="table.html">
+                <a href="#">
                     <i class="pe-7s-note2"></i>
                     <p>Laporan</p>
                 </a>
