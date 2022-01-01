@@ -22,6 +22,7 @@ class CreateJadwalsidangTable extends Migration
             $table->unsignedBigInteger('id_dosen');
             $table->foreign('id_dosen')->references('id')->on('users');
             $table->dateTime('tgl_sidang');
+            $table->string('ruang_sidang');
             $table->string('semester', 5);
             $table->timestamps();
         });
