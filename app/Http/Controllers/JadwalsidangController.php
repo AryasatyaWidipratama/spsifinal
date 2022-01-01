@@ -28,13 +28,13 @@ class JadwalsidangController extends Controller
 
     public function create()
     {
-        $data['listDosen'] = User::whereHas('role', function($query) {
+        $data['listDosen'] = User::whereHas('role', function ($query) {
             $query->where('jenis_role', 'Dosen');
         })->get();
-        $data['listMahasiswa'] = User::whereHas('role', function($query) {
+        $data['listMahasiswa'] = User::whereHas('role', function ($query) {
             $query->where('jenis_role', 'Mahasiswa');
         })->get();
-        
+
         return view('dashboard.paa.jadwal_sidang.create', $data);
     }
 
@@ -56,17 +56,35 @@ class JadwalsidangController extends Controller
 
     public function edit(JadwalSidang $jadwalSidang)
     {
+        $data['listDosen'] = User::whereHas('role', function ($query) {
+            $query->where('jenis_role', 'Dosen');
+        })->get();
+        $data['listMahasiswa'] = User::whereHas('role', function ($query) {
+            $query->where('jenis_role', 'Mahasiswa');
+        })->get();
+        $data['jadwalSidang'] = $jadwalSidang;
 
+        return view('dashboard.paa.jadwal_sidang.edit', $data);
     }
 
     public function update(JadwalSidang $jadwalSidang, Request $request)
     {
+        $validatedRequest = $request->validate([
+            'id_paa' => ['required'],
+            'id_dosen' => ['required'],
+            'id_mahasiswa' => ['required'],
+            'tgl_sidang' => ['required'],
+            'ruang_sidang' => ['required'],
+            'semester' => ['required'],
+        ]);
 
+        $jadwalSidang->update($validatedRequest);
+
+        return redirect()->route('jadwal-sidang.index')->with('success', 'Berhasil update data sidang');
     }
 
 
     public function destroy(JadwalSidang $jadwalSidang)
     {
-
     }
 }
