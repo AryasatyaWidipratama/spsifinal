@@ -26,7 +26,11 @@ class HonorController extends Controller
 
         $data['honorDosen'] = PengajuanHonor::when($request->tgl_awal, function ($query) use ($request) {
             $query->whereBetween('tgl_pengajuan', [$request->tgl_awal, $request->tgl_akhir]);
-        })->get();
+        })
+            ->whereHas('jadwalSidang', function ($query) {
+                $query->where('id_dosen', auth()->id());
+            })
+            ->get();
         $data['tgl_awal'] = $request->tgl_awal;
         $data['tgl_akhir'] = $request->tgl_akhir;
 
