@@ -7,7 +7,7 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading text-center">Informasi Slip Honor</div>
+            <div class="panel-heading text-center">Search</div>
             <div class="panel-body">
                 <form method="GET" action="{{ route('honor.belum-diajukan') }}" enctype="multipart/form-data">
                     @csrf
@@ -38,10 +38,17 @@
     </div>
 </div>
 
-<form action="#">
-    <button class="btn btn-primary">Ajukan Honor</button>
+@if($idSidangBelumHonor->isNotEmpty())
+<form action="{{ route('honor.store') }}" method="POST">
+    @csrf
+    @foreach ($idSidangBelumHonor as $idSidang)
+    <input type="hidden" name="id_jadwal_sidang[]" value="{{ $idSidang }}">
+    @endforeach
+
+    <button type="submit" class="btn btn-primary">Ajukan Honor</button>
 </form>
 <br><br>
+@endif
 
 <div class="row">
     <div class="col-md-12">
@@ -55,7 +62,7 @@
 
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading text-center">Honor Belum Diajukan</div>
+            <div class="panel-heading text-center">Sidang Belum Diajukan Honor</div>
             <div class="panel-body">
                 <table class="table">
                     <tr>

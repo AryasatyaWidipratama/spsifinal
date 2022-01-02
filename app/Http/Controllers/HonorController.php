@@ -10,7 +10,7 @@ class HonorController extends Controller
 {
     public function index()
     {
-        $data['pengajuanHonor'] = PengajuanHonor::all();
+        $data['pengajuanHonor'] = PengajuanHonor::with(['jadwalSidang.dosen', 'jadwalSidang.mahasiswa'])->get();
         return view('dashboard.paa.honor.index', $data);
     }
 
@@ -28,6 +28,8 @@ class HonorController extends Controller
         })->whereNotIn('id', $idSidangSudahHonor)->get();
         $data['tgl_awal'] = $request->tgl_awal;
         $data['tgl_akhir'] = $request->tgl_akhir;
+        // dd($data['sidangBelumHonor']->pluck('id'));
+        $data['idSidangBelumHonor'] = $data['sidangBelumHonor']->pluck('id');
 
         return view('dashboard.paa.honor.sidang_belum_honor', $data);
     }
@@ -59,7 +61,16 @@ class HonorController extends Controller
 
     public function store(Request $request)
     {
-        //
+        foreach ($request->id_jadwal_sidang as $idSidang) {
+            PengajuanHonor::create([
+                'id_paa' => auth()->id(),
+                'id_jadwal_sidang' => $idSidang,
+                'tgl_pengajuan' => Date('Y-m-d'),
+                'status' => 0,
+            ]);
+        }
+
+        return redirect()->route('honor.belum-diajukan')->with('success', 'Berhasil mengajukan honor');
     }
 
     public function show($id)
