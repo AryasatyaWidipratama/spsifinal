@@ -20,6 +20,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Dosen</th>
+                        <th>Mahasiswa</th>
                         <th>Tanggal Pengajuan</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -28,9 +29,10 @@
                     @foreach ($pengajuanHonor as $honor)
                     <tr>
                         <td>{{ $honor->id }}</td>
-                        <td>{{ $honor->mahasiswa->nama }}</td>
-                        <td>{{ $honor->tgl_sidang }}</td>
-                        <td>{{ $honor->ruang_sidang }}</td>
+                        <td>{{ $honor->jadwalSidang->dosen->nama }}</td>
+                        <td>{{ $honor->jadwalSidang->mahasiswa->nama }}</td>
+                        <td>{{ $honor->tgl_pengajuan }}</td>
+                        <td>{{ $honor->status }}</td>
                         <td>
                             <ul class="list-inline m-0">
                                 <li class="list-inline-item">
