@@ -29,11 +29,16 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+    // MAHASISWA
     Route::get('/dashboard/jadwal-sidang-mahasiswa', [JadwalsidangController::class, 'jadwalSidangMahasiswa'])->name('jadwal-sidang.mahasiswa');
     Route::resource('dashboard/laporan', LaporanController::class);
 
+    // DOSEN
     Route::get('/dashboard/jadwal-sidang-dosen', [JadwalsidangController::class, 'jadwalSidangDosen'])->name('jadwal-sidang.dosen');
     Route::get('/dashboard/honor-dosen', [HonorController::class, 'honorDosen'])->name('honor.dosen');
 
+    // PAA
+    Route::get('/dashboard/honor-belum-diajukan', [HonorController::class, 'honorBelumDiajukan'])->name('honor.belum-diajukan');
+    Route::resource('/dashboard/honor', HonorController::class);
     Route::resource('/dashboard/jadwal-sidang', JadwalsidangController::class);
 });

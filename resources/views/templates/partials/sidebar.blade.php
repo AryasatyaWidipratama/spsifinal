@@ -50,14 +50,20 @@ Tip 2: you can also add an image using data-image tag
             @endcan
 
             @can('paa')
-            <li>
+            <li class="{{ Request::is('dashboard/jadwal-sidang*') ? 'active' : '' }}">
                 <a href="{{ route('jadwal-sidang.index') }}">
                     <i class="pe-7s-date"></i>
                     <p>Jadwal Sidang</p>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::is('dashboard/honor*') ? 'active' : '' }}">
+                <a href="{{ route('honor.index') }}">
+                    <i class="pe-7s-cash"></i>
+                    <p>Honor</p>
+                </a>
+            </li>
+            <li class="{{ Request::is('dashboard/honor*') ? 'active' : '' }}">
+                <a href="{{ route('honor.index') }}">
                     <i class="pe-7s-cash"></i>
                     <p>Honor</p>
                 </a>
