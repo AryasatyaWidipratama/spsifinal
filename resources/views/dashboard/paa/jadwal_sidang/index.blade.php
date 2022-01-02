@@ -24,6 +24,7 @@
                 <table class="table">
                     <tr>
                         <th>ID</th>
+                        <th>Dosen</th>
                         <th>Mahasiswa</th>
                         <th>Tanggal Sidang</th>
                         <th>Ruang</th>
@@ -33,6 +34,7 @@
                     @foreach ($jadwalSidang as $jadwal)
                     <tr>
                         <td>{{ $jadwal->id }}</td>
+                        <td>{{ $jadwal->dosen->nama }}</td>
                         <td>{{ $jadwal->mahasiswa->nama }}</td>
                         <td>{{ $jadwal->tgl_sidang }}</td>
                         <td>{{ $jadwal->ruang_sidang }}</td>

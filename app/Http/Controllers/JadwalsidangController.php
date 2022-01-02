@@ -10,7 +10,7 @@ class JadwalsidangController extends Controller
 {
     public function index()
     {
-        $data['jadwalSidang'] = JadwalSidang::all();
+        $data['jadwalSidang'] = JadwalSidang::with(['mahasiswa', 'dosen'])->get();
         return view('dashboard.paa.jadwal_sidang.index', $data);
     }
 
