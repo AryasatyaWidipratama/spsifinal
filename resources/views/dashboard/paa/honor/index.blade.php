@@ -34,12 +34,7 @@
                         <td>
                             <ul class="list-inline m-0">
                                 <li class="list-inline-item">
-                                    <a href="{{ route('honor-sidang.edit', $honor->id) }}"
-                                        class="btn btn-xs btn-block btn-info">
-                                        Edit
-                                    </a>
-                                <li class="list-inline-item">
-                                    <form action="{{ route('.destroy', $honor->id) }}" method="POST">
+                                    <form action="{{ route('honor.destroy', $honor->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-xs btn-block btn-danger"

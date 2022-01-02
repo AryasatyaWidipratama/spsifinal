@@ -67,8 +67,9 @@ class HonorController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(PengajuanHonor $pengajuanHonor)
     {
-        //
+        $pengajuanHonor->delete();
+        return redirect()->route('honor.index')->with('success', 'Berhasil menghapus data honor');
     }
 }
