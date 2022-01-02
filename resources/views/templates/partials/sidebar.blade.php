@@ -56,16 +56,16 @@ Tip 2: you can also add an image using data-image tag
                     <p>Jadwal Sidang</p>
                 </a>
             </li>
-            <li class="{{ Request::is('dashboard/honor*') ? 'active' : '' }}">
+            <li class="{{ Request::is('dashboard/honor') ? 'active' : '' }}">
                 <a href="{{ route('honor.index') }}">
                     <i class="pe-7s-cash"></i>
                     <p>Honor</p>
                 </a>
             </li>
-            <li class="{{ Request::is('dashboard/honor*') ? 'active' : '' }}">
-                <a href="{{ route('honor.index') }}">
-                    <i class="pe-7s-cash"></i>
-                    <p>Honor</p>
+            <li class="{{ Request::is('dashboard/honor-belum-diajukan*') ? 'active' : '' }}">
+                <a href="{{ route('honor.belum-diajukan') }}">
+                    <i class="pe-7s-bookmarks"></i>
+                    <p>Pengajuan Honor</p>
                 </a>
             </li>
             @endcan
