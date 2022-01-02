@@ -14,10 +14,20 @@ class HonorController extends Controller
         return view('dashboard.paa.honor.index', $data);
     }
 
-    public function honorBelumDiajukan()
+    public function honorBelumDiajukan(Request $request)
     {
+        $request->validate([
+            'tgl_awal' => ['date'],
+            'tgl_akhir' => ['date', 'after_or_equal:tgl_awal']
+        ]);
+
         $idSidangSudahHonor = PengajuanHonor::pluck('id_jadwal_sidang');
-        $data['sidangBelumHonor'] = JadwalSidang::whereNotIn('id', $idSidangSudahHonor)->get();
+
+        $data['sidangBelumHonor'] = JadwalSidang::when($request->tgl_awal, function ($query) use ($request) {
+            $query->whereBetween('tgl_sidang', [$request->tgl_awal, $request->tgl_akhir . ' 23:59:59']);
+        })->whereNotIn('id', $idSidangSudahHonor)->get();
+        $data['tgl_awal'] = $request->tgl_awal;
+        $data['tgl_akhir'] = $request->tgl_akhir;
 
         return view('dashboard.paa.honor.sidang_belum_honor', $data);
     }
