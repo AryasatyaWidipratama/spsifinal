@@ -69,7 +69,7 @@
                         <th>ID</th>
                         <th>Dosen</th>
                         <th>Mahasiswa</th>
-                        <th>Tanggal Pengajuan</th>
+                        <th>Tanggal Sidang</th>
                         <th>Ruang Sidang</th>
                     </tr>
                     @if ($sidangBelumHonor->isNotEmpty())
