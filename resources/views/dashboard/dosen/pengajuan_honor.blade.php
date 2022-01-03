@@ -56,7 +56,7 @@
                         <tr>
                             <td>{{ $honor->paa->nama }}</td>
                             <td>{{ $honor->tgl_pengajuan }}</td>
-                            <td>{{ $honor->status }}</td>
+                            <td>{{ $honor->status == 0 ? 'Belum Diproses' : 'Sudah Diproses' }}</td>
                         </tr>
                         @endforeach
                         @else
